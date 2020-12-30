@@ -1,7 +1,72 @@
 {% extends "base.html" %}
 {% block body %}
 <div class="container my-3">
-    <h2>If your first time, Please Wait Popup Box is Opening for Push Notification..</h2>
-    <a href="/notification" class"btn btn-danger btn-lg">Click Here To Get Notification...</a>
+    <h5>If your first time, Please Wait Popup Box is Opening for Push Notification..</h5>
+    <form action="notification">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="time1" class="form-label">Time 1</label>
+                    <input type="text" class="form-control" id="time1" name="time1">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="time2" class="form-label">Time 2</label>
+                    <input type="text" class="form-control" id="time2" name="time2">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="time3" class="form-label">Time 3</label>
+                    <input type="text" class="form-control" id="time3" name="time3">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="time4" class="form-label">Time 4</label>
+                    <input type="text" class="form-control" id="time4" name="time4">
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="row">
+                <label class="form-label"><b>Start Date</b></label><br>
+                <div class="col-md-2">
+                    <label for="day1">Day</label>
+                    <input type="text" class="form-control" id="day1" name="day1">
+                </div>
+                <div class="col-md-2">
+                    <label for="month1">Month</label>
+                    <input type="text" class="form-control" id="month1" name="month1">
+                </div>
+                <div class="col-md-2">
+                    <label for="year1">Year</label>
+                    <input type="text" class="form-control" id="year1" name="year1">
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="row">
+                <label class="form-label"><b>End Date</b></label><br>
+                <div class="col-md-2">
+                    <label for="day2">Day</label>
+                    <input type="text" class="form-control" id="day2" name="day2">
+                </div>
+                <div class="col-md-2">
+                    <label for="month2">Month</label>
+                    <input type="text" class="form-control" id="month2" name="month2">
+                </div>
+                <div class="col-md-2">
+                    <label for="year2">Year</label>
+                    <input type="text" class="form-control" id="year2" name="year2">
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <input type="submit" value="Get Notification" class="btn btn-primary">
+        </div>
+    </form>
 </div>
 {% endblock body %}

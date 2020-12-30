@@ -6,7 +6,7 @@ import requests
 import json
 
 @shared_task
-def Notify(time1,time2):
+def Notify(time1,time2,Day1,Month1,Year1,Day2,Month2,Year2):
     def push():
         header = {"Content-Type": "application/json; charset=utf-8",
             "Authorization": "Basic MDQwMzgzYTgtNDM5My00YTQwLWI0MTUtNTI0ZWViOTkzZWRm"}
@@ -24,21 +24,19 @@ def Notify(time1,time2):
         if count == Days:
             push()
             return schedule.cancel_job
-            # exit(0)
         else:
             push()
 
-    start_date = date(2020, 12, 29)
-    end_date = date(2020, 12, 29)
+    start_date = date(int(Year1), int(Month1), int(Day1))
+    end_date = date(int(Year2),int(Month2), int(Day2))
     delta = end_date - start_date
     Days = delta.days+1
 
     for count in range(1,Days+1):
         count-=1
-        # schedule.every().tuesday.at(time1).do(job, count=count, Days=Days)
-        schedule.every().tuesday.at(time1).do(job, count=count, Days=Days)
+        schedule.every().day.at(time1).do(job, count=count, Days=Days)
         count+=1
-        schedule.every().tuesday.at(time2).do(job, count=count, Days=Days)
+        schedule.every().day.at(time2).do(job, count=count, Days=Days)
         
     while 1:
         schedule.run_pending()
