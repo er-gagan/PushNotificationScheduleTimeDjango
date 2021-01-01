@@ -1,13 +1,10 @@
 from django.shortcuts import redirect, render
-import schedule
-import time
-from datetime import date
-import requests
-import json
 from .task import Notify
+from django.shortcuts import render
+
 # Create your views here.
 def home(request):
-    return render(request,'App/home.html')
+    return render(request, 'App/home.html')
 
 def notification(request):
     Time1 = request.GET['time1']
@@ -22,7 +19,6 @@ def notification(request):
     Month2 = request.GET['month2']
     Year2 = request.GET['year2']
 
-    # print(Time1,Time2,Time3,Time4,Day1,Month1,Year1,Day2,Month2,Year2)
     time1 = Time1
     time2 = Time3
     Notify.delay(time1,time2,Day1,Month1,Year1,Day2,Month2,Year2)

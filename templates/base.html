@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -9,19 +10,18 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
-    <title>Push, Notification!</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
 
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function () {
-            OneSignal.init({
-                appId: "b7a3f46c-d540-43d9-9b4c-fc3b31a95b83",
-            });
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+        OneSignal.init({
+        appId: "b7a3f46c-d540-43d9-9b4c-fc3b31a95b83",
         });
+    });
     </script>
-
+    <title>Push, Notification!</title>
 </head>
 
 <body>
@@ -82,10 +82,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     -->
 </body>
-
 </html>
-
-
 <script type="text/javascript">
     OneSignal.push(function () {
         /* These examples are all valid */
@@ -98,7 +95,7 @@
                     console.log("Push notifications are enabled!");
                     OneSignal.getUserId(function (userId) {
                         console.log("OneSignal User ID:", userId);
-                        // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
+                        // OneSignal User ID: 30f8622a-2bbf-4ab0-a251-1c49a1b51d1c
                     });
                 }
                 else
