@@ -19,10 +19,12 @@ def notification(request):
     Month2 = request.GET['month2']
     Year2 = request.GET['year2']
 
-    time1 = Time1
-    time2 = Time3
-    Notify.delay(time1,time2,Day1,Month1,Year1,Day2,Month2,Year2)
-    time1 = Time2
-    time2 = Time4
-    Notify.delay(time1,time2,Day1,Month1,Year1,Day2,Month2,Year2)
+    UserId = request.GET['user_id']
+    if UserId:
+        time1 = Time1
+        time2 = Time3
+        Notify.delay(UserId,time1,time2,Day1,Month1,Year1,Day2,Month2,Year2)
+        time1 = Time2
+        time2 = Time4
+        Notify.delay(UserId,time1,time2,Day1,Month1,Year1,Day2,Month2,Year2)
     return redirect('/')

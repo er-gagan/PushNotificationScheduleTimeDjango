@@ -1,5 +1,19 @@
 {% extends "base.html" %}
+
 {% load static %}
+
+{% block Head %}
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+        OneSignal.init({
+            appId: "b7a3f46c-d540-43d9-9b4c-fc3b31a95b83",
+        });
+    });
+</script>
+{% endblock Head %}
+
 {% block body %}
 <div class="container my-3">
     <h5>If your first time, Please Wait Popup Box is Opening for Push Notification..</h5>
@@ -65,9 +79,41 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="user_id" id="user_id">
         <div class="text-center">
             <input type="submit" value="Get Notification" class="btn btn-primary">
         </div>
     </form>
 </div>
 {% endblock body %}
+
+{% block OutSide %}
+<script type="text/javascript">
+    OneSignal.push(function () {
+        /* These examples are all valid */
+        var isPushSupported = OneSignal.isPushNotificationsSupported();
+        if (isPushSupported) {
+            // Push notifications are supported
+            console.log("supported");
+            OneSignal.isPushNotificationsEnabled(function (isEnabled) {
+                if (isEnabled) {
+                    console.log("Push notifications are enabled!");
+                    OneSignal.getUserId(function (userId) {
+                        console.log("OneSignal User ID:", userId);
+                        document.getElementById('user_id').value = userId;
+                        // OneSignal User ID: 30f8622a-2bbf-4ab0-a251-1c49a1b51d1c
+                    });
+                }
+                else
+                    console.log("Push notifications are not enabled yet.");
+                OneSignal.push(function () {
+                    OneSignal.showHttpPrompt();
+                });
+            });
+        } else {
+            // Push notifications are not supported
+            console.log("Not supported");
+        }
+    });
+</script>
+{% endblock OutSide %}
