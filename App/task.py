@@ -7,19 +7,18 @@ import json
 
 @shared_task
 def Notify(UserId,time1,time2,Day1,Month1,Year1,Day2,Month2,Year2):
-    def push():        
+    def push():
         header = {"Content-Type": "application/json; charset=utf-8", "Authorization": "Basic MDQwMzgzYTgtNDM5My00YTQwLWI0MTUtNTI0ZWViOTkzZWRm"}
 
         payload = {"app_id": "b7a3f46c-d540-43d9-9b4c-fc3b31a95b83",
-            # "included_segments": ["Subscribed Users"],
-            "include_player_ids": [UserId],
-            "headings": {"en": "Congratulations!!!"},
+            "include_external_user_ids": [UserId],
+            "channel_for_external_user_ids": "push",
+            "headings": {"en": "Congratulations User!!!"},
             "contents": {"en": "This is push notification"}
-            }
+        }
 
         req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
         # print(req.status_code, req.reason)
-
 
     def job(count,Days):
         if count == Days:
